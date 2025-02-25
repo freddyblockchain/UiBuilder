@@ -1,4 +1,4 @@
-package io.github.libgdx_ui_builder.UiElement.UiElements
+package io.github.libgdx_ui_builder.UiElement
 
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite

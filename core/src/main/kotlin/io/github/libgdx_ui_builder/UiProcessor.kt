@@ -1,6 +1,6 @@
 package io.github.libgdx_ui_builder
 
-import io.github.libgdx_ui_builder.UiElement.UiElement
+import com.badlogic.gdx.Input.Keys
 import com.badlogic.gdx.InputAdapter
 
 class UiProcessor() : InputAdapter() {
@@ -23,6 +23,13 @@ class UiProcessor() : InputAdapter() {
 
     override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
         uiElements.forEach { it.onDragEnd() }
+        return true
+    }
+
+    override fun keyDown(keycode: Int): Boolean {
+        if(keycode == Keys.SPACE){
+            UiFileHandler.writeScreenToFile(mainScreen)
+        }
         return true
     }
 }

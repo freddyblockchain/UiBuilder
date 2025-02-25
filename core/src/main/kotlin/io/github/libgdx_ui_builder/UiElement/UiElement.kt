@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 
 @Serializable
-abstract class UiElement(var xPos:Float = 0f, var yPos:Float = 0f, var w: Float, var h: Float): Draggable {
+sealed class UiElement(var xPos:Float = 0f, var yPos:Float = 0f, var w: Float, var h: Float): Draggable {
     val width = w * ScreenManager.widthUnit
     val height = h * ScreenManager.heightUnit
     var screenX: Float = ScreenManager.widthUnit * xPos

@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.badlogic.gdx.math.Vector2
 import io.github.libgdx_ui_builder.Draggable
 import io.github.libgdx_ui_builder.RenderManager
 import io.github.libgdx_ui_builder.ScreenManager
@@ -13,8 +14,8 @@ import kotlinx.serialization.Transient
 
 @Serializable
 sealed class UiElement(var xPos:Float = 0f, var yPos:Float = 0f, var w: Float, var h: Float): Draggable {
-    val width = w * ScreenManager.widthUnit
-    val height = h * ScreenManager.heightUnit
+    var screenWidth = ScreenManager.widthUnit * w
+    var screenHeight = ScreenManager.heightUnit * h
     var screenX: Float = ScreenManager.widthUnit * xPos
     var screenY: Float = ScreenManager.heightUnit * yPos
     abstract val sprite: Sprite
@@ -30,9 +31,16 @@ sealed class UiElement(var xPos:Float = 0f, var yPos:Float = 0f, var w: Float, v
     @Transient
     var selected = false
 
+    fun calculatePosition(widthUnit: Float, heightUnit: Float, startPos: Vector2){
+        screenWidth = widthUnit * w
+        screenHeight = heightUnit * h
+        screenX  = widthUnit * xPos + startPos.x
+        screenY = heightUnit * yPos + startPos.y
+    }
+
     open fun render(batch: SpriteBatch){
         sprite.setPosition(screenX, screenY)
-        sprite.setSize(width, height)
+        sprite.setSize(screenWidth, screenHeight)
         sprite.draw(batch)
 
         // Draw border if selected
@@ -42,7 +50,7 @@ sealed class UiElement(var xPos:Float = 0f, var yPos:Float = 0f, var w: Float, v
             shapeRenderer.projectionMatrix = batch.projectionMatrix
             shapeRenderer.begin(ShapeRenderer.ShapeType.Line)
             shapeRenderer.color = Color.GREEN
-            shapeRenderer.rect(screenX, screenY, width, height)
+            shapeRenderer.rect(screenX, screenY, screenWidth, screenHeight)
             shapeRenderer.end()
 
             batch.begin() // Restart batch
@@ -80,9 +88,13 @@ sealed class UiElement(var xPos:Float = 0f, var yPos:Float = 0f, var w: Float, v
         val originalX = screenX / ScreenManager.maxWidth
         val originalY = screenY / ScreenManager.maxHeight
 
-        val withinX = transX >= originalX && transX <= originalX + (width / ScreenManager.maxWidth)
-        val withinY = transY >= originalY && transY <= originalY + (height  / ScreenManager.maxHeight)
+        val withinX = transX >= originalX && transX <= originalX + (screenWidth / ScreenManager.maxWidth)
+        val withinY = transY >= originalY && transY <= originalY + (screenHeight  / ScreenManager.maxHeight)
 
         return isDragging || (withinX && withinY)
+    }
+
+    open fun onPress(){
+
     }
 }

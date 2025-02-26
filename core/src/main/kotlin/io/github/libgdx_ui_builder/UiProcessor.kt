@@ -1,5 +1,6 @@
 package io.github.libgdx_ui_builder
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input.Keys
 import com.badlogic.gdx.InputAdapter
 
@@ -28,6 +29,11 @@ class UiProcessor() : InputAdapter() {
 
     override fun keyDown(keycode: Int): Boolean {
         if(keycode == Keys.SPACE){
+            //Linear mapping
+            uiElements.forEach {
+                it.xPos = (it.screenX / Gdx.graphics.width) * ScreenManager.maxWidth
+                it.yPos = (it.screenY / Gdx.graphics.height) * ScreenManager.maxHeight
+            }
             UiFileHandler.writeScreenToFile(mainScreen)
         }
         return true

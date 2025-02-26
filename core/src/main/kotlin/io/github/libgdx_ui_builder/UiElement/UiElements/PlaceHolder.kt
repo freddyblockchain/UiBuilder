@@ -15,7 +15,7 @@ class PlaceHolder(var buttonX: Float, var buttonY: Float, var name: String) : Ui
     override val sprite: Sprite = Sprite(Texture("white-box.png"))
 
     override fun render(batch: SpriteBatch) {
-        super.render(batch)
+        //super.render(batch)
     }
 
 }

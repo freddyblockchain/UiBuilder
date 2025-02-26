@@ -1,6 +1,5 @@
 package io.github.libgdx_ui_builder.UiElement
 
-import io.github.libgdx_ui_builder.UiElement.UiElement
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
@@ -16,7 +15,7 @@ class NavButton(var buttonX: Float, var buttonY: Float, var text: String) : UiEl
 
     override fun render(batch: SpriteBatch) {
         super.render(batch)
-        FontManager.SmallFont.draw(batch,text,this.screenX + this.width / 4,  this.screenY + (this.height / 1.5f))
+        FontManager.SmallFont.draw(batch,text,this.screenX + this.screenWidth / 4,  this.screenY + (this.screenHeight / 1.5f))
     }
 
 }

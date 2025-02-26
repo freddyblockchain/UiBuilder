@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import io.github.libgdx_ui_builder.ProgScreens.PauseMainScreen
+import io.github.libgdx_ui_builder.ProgScreens.StatusScreen
 
 
 /** [com.badlogic.gdx.ApplicationListener] implementation shared by all platforms. */
@@ -23,7 +24,7 @@ class Main : ApplicationAdapter(){
         sprite = Sprite(texture)
 
         Gdx.input.inputProcessor = UiProcessor()
-        mainScreen = PauseMainScreen()
+        mainScreen = StatusScreen()
         uiElements = mainScreen.uiElements
 
         FontManager.initFonts()

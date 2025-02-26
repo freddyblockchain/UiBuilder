@@ -8,7 +8,11 @@ import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.math.Vector
+import com.badlogic.gdx.math.Vector2
 import io.github.libgdx_ui_builder.FontManager
+import io.github.libgdx_ui_builder.ScreenManager
+import io.github.libgdx_ui_builder.UiElement.PlaceHolder
 import io.github.libgdx_ui_builder.UiFileHandler
 
 
@@ -24,6 +28,20 @@ class TestMain : ApplicationAdapter(){
         sprite = Sprite(texture)
 
         uiElements = UiFileHandler.getScreenFromFile("PauseMainScreen")
+        val placeHolder = uiElements.find { it is PlaceHolder }
+
+        val startPos = Vector2(placeHolder!!.screenX, placeHolder!!.screenY)
+        val placeholderWidthUnit = placeHolder.screenWidth / ScreenManager.maxWidth
+        val placeholderHeightUnit = placeHolder.screenHeight / ScreenManager.maxHeight
+
+        val statusObjects = UiFileHandler.getScreenFromFile("StatusScreen")
+
+        statusObjects.forEach {
+            it.calculatePosition(placeholderWidthUnit,placeholderHeightUnit,startPos)
+        }
+
+        uiElements.addAll(statusObjects)
+
 
         Gdx.input.inputProcessor = TestProcessor(uiElements)
 

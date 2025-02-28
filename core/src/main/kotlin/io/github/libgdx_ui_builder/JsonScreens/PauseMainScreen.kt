@@ -1,4 +1,4 @@
-package io.github.libgdx_ui_builder.ProgScreens
+package io.github.libgdx_ui_builder.JsonScreens
 
 import io.github.libgdx_ui_builder.Screen
 import io.github.libgdx_ui_builder.UiElement.NavButton

@@ -1,16 +1,15 @@
-package io.github.libgdx_ui_builder.ProgScreens
+package io.github.libgdx_ui_builder.JsonScreens
 
+import io.github.libgdx_ui_builder.FontType
 import io.github.libgdx_ui_builder.Screen
 import io.github.libgdx_ui_builder.UiElement.Image
 import io.github.libgdx_ui_builder.UiElement.Label
-import io.github.libgdx_ui_builder.UiElement.NavButton
-import io.github.libgdx_ui_builder.UiElement.PlaceHolder
 
 class StatusScreen(): Screen {
     override val name = "StatusScreen"
     val image = Image(x = 2f, y = 2f)
-    val StatusLabel = Label(x = 18f, y = 2f, width = 8f, height = 4f, labelText = "Status")
-    val label = Label(x = 4f, y = 2f, labelText = "Name: ")
+    val StatusLabel = Label(x = 18f, y = 2f, labelText = "Status", fontType = FontType.CHAPTERFONT)
+    val label = Label(x = 4f, y = 4f, labelText = "Name: ")
     val label2 = Label(x = 6f, y = 2f, labelText = "Stage: ")
     val label3 = Label(x = 8f, y = 2f, labelText = "Types: ")
     val label4 = Label(x = 10f, y = 2f, labelText = "TrainingPoints: ")

@@ -7,8 +7,7 @@ import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import io.github.libgdx_ui_builder.ProgScreens.PauseMainScreen
-import io.github.libgdx_ui_builder.ProgScreens.StatusScreen
+import io.github.libgdx_ui_builder.JsonScreens.AbilityScreen
 
 
 /** [com.badlogic.gdx.ApplicationListener] implementation shared by all platforms. */
@@ -24,7 +23,7 @@ class Main : ApplicationAdapter(){
         sprite = Sprite(texture)
 
         Gdx.input.inputProcessor = UiProcessor()
-        mainScreen = StatusScreen()
+        mainScreen = AbilityScreen()
         uiElements = mainScreen.uiElements
 
         FontManager.initFonts()

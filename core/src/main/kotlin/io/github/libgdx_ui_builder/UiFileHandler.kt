@@ -1,9 +1,7 @@
 package io.github.libgdx_ui_builder
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.files.FileHandle
-import io.github.libgdx_ui_builder.ProgScreens.PauseMainScreen
 import io.github.libgdx_ui_builder.UiElement.UiElement
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.io.BufferedWriter
 import java.io.File

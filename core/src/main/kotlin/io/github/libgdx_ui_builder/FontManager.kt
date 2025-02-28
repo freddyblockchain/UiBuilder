@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 
+enum class FontType{TEXTFONT, SMALLFONT, MEDIUMFONT, SMALLTOMEDIUMFONT, CHAPTERFONT}
 class FontManager {
 
     companion object {
@@ -16,6 +17,15 @@ class FontManager {
         lateinit var MediumFont: BitmapFont
         lateinit var SmallToMediumFont: BitmapFont
         lateinit var SmallFont: BitmapFont
+
+        fun getFont(fontType: FontType): BitmapFont{
+            return when(fontType){
+                FontType.MEDIUMFONT -> MediumFont
+                FontType.CHAPTERFONT -> ChapterFont
+                FontType.SMALLFONT -> SmallFont
+                else -> TextFont
+            }
+        }
 
         fun initFonts() {
             TextFont = initFont((0.5f * ScreenManager.widthUnit).toInt(), borderWidth = 1f, borderColor = Color.WHITE)

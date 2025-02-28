@@ -26,6 +26,9 @@ sealed class UiElement(var xPos:Float = 0f, var yPos:Float = 0f, var w: Float, v
     private var dragOffsetY = 0f
 
     @Transient
+    open var renderSprite = true
+
+    @Transient
     override var isDragging = false
 
     @Transient
@@ -41,7 +44,9 @@ sealed class UiElement(var xPos:Float = 0f, var yPos:Float = 0f, var w: Float, v
     open fun render(batch: SpriteBatch){
         sprite.setPosition(screenX, screenY)
         sprite.setSize(screenWidth, screenHeight)
-        sprite.draw(batch)
+        if(renderSprite){
+            sprite.draw(batch)
+        }
 
         // Draw border if selected
         if (selected) {
@@ -65,7 +70,9 @@ sealed class UiElement(var xPos:Float = 0f, var yPos:Float = 0f, var w: Float, v
     }
 
     override fun onDrag(dragX: Float, dragY: Float) {
-        if (isDragging && ScreenManager.checkBounds(sprite.x,sprite.y, sprite.width, sprite.height)) {
+        //DOes not work
+       // ScreenManager.checkBounds(sprite.x,sprite.y, sprite.width, sprite.height)
+        if (isDragging) {
             this.screenX = dragX - dragOffsetX
             this.screenY = (Gdx.graphics.displayMode.height - dragY) - dragOffsetY
 

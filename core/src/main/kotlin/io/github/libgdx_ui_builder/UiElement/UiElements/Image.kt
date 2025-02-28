@@ -8,5 +8,5 @@ import kotlinx.serialization.Transient
 @Serializable
 class Image(val width: Float = 4f, val height: Float = 6f, val x:Float, val y: Float): UiElement(w = width, h = height, xPos = x, yPos = y) {
     @Transient
-    override var sprite: Sprite = Sprite(Texture("white-box.png"))
+    override var sprite: Sprite = Sprite(Texture("Icicle.png"))
 }

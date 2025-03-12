@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Sprite
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import io.github.libgdx_ui_builder.JsonScreens.AbilityScreen
+import io.github.libgdx_ui_builder.JsonScreens.CardGameScreen
+import io.github.libgdx_ui_builder.JsonScreens.StatusScreen
 
 
 /** [com.badlogic.gdx.ApplicationListener] implementation shared by all platforms. */
@@ -23,7 +25,7 @@ class Main : ApplicationAdapter(){
         sprite = Sprite(texture)
 
         Gdx.input.inputProcessor = UiProcessor()
-        mainScreen = AbilityScreen()
+        mainScreen = CardGameScreen()
         uiElements = mainScreen.uiElements
 
         FontManager.initFonts()

@@ -9,13 +9,13 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 
 @Serializable
-class PlaceHolder(var buttonX: Float, var buttonY: Float, var name: String) : UiElement(xPos = buttonX, yPos = buttonY, w = 23f, h = 27f) {
+class PlaceHolder(var buttonX: Float, var buttonY: Float, var name: String, var width: Float = 23f, var height: Float = 27f) : UiElement(xPos = buttonX, yPos = buttonY, w = width, h = height) {
 
     @Transient // Exclude the 'sprite' field from serialization
     override val sprite: Sprite = Sprite(Texture("white-box.png"))
 
     override fun render(batch: SpriteBatch) {
-        //super.render(batch)
+        super.render(batch)
     }
 
 }

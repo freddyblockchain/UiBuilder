@@ -13,7 +13,7 @@ fun main() {
 
     val main = Main()
     val testApp = TestMain()
-    var startupApplication = testApp
+    var startupApplication = main
     if (StartupHelper.startNewJvmIfRequired())
       return
     Lwjgl3Application(startupApplication, Lwjgl3ApplicationConfiguration().apply {

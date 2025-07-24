@@ -15,7 +15,7 @@ class PauseScreen: GameScreen {
 
     var statusElements: MutableList<UiElement> = mutableListOf()
     var inventoryElements: MutableList<UiElement> = mutableListOf()
-    var abilityElements: MutableList<UiElement> = mutableListOf()
+    var animeliaElements: MutableList<UiElement> = mutableListOf()
 
     var currentElements: MutableList<UiElement> = mutableListOf()
 
@@ -39,28 +39,13 @@ class PauseScreen: GameScreen {
         uiElements.forEach {
             it.calculatePosition(ScreenManager.widthUnit.toFloat(), ScreenManager.heightUnit.toFloat(), Vector2(0f,0f))
         }
-
-        statusElements = initSubScreen(name = "StatusScreen")
         inventoryElements = initSubScreen(name = "InventoryScreen")
-        abilityElements = initSubScreen(name = "AbilityScreen")
+        animeliaElements = initSubScreen(name = "AnimeliaScreen")
 
         currentElements = statusElements
 
-        val statusButton = uiElements.find { it is NavButton && it.text == "Status" } as NavButton
-        val abilityButton = uiElements.find { it is NavButton && it.text == "Abilities" } as NavButton
         val inventoryButton = uiElements.find { it is NavButton && it.text == "Inventory" } as NavButton
-
-        statusButton.onPressAction = {
-            uiElements.removeAll(currentElements)
-            currentElements = statusElements
-            uiElements.addAll(currentElements)
-        }
-
-        abilityButton.onPressAction = {
-            uiElements.removeAll(currentElements)
-            currentElements = abilityElements
-            uiElements.addAll(currentElements)
-        }
+        val animeliaButton = uiElements.find { it is NavButton && it.text == "Animelia" } as NavButton
 
         inventoryButton.onPressAction = {
             uiElements.removeAll(currentElements)
@@ -68,6 +53,11 @@ class PauseScreen: GameScreen {
             uiElements.addAll(currentElements)
         }
 
+        animeliaButton.onPressAction = {
+            uiElements.removeAll(currentElements)
+            currentElements = animeliaElements
+            uiElements.addAll(currentElements)
+        }
         uiElements.addAll(currentElements)
     }
 }

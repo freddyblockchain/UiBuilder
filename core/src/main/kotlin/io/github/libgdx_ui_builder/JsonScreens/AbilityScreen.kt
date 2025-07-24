@@ -9,5 +9,5 @@ class AbilityScreen: Screen {
     override val name = "AbilityScreen"
     val abilityLabel: UiElement = Label(x = 18f, y = 2f, labelText = "Abilities", fontType = FontType.CHAPTERFONT)
 
-    override val uiElements = mutableListOf(abilityLabel)
+    override var uiElements = mutableListOf(abilityLabel)
 }

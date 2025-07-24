@@ -23,7 +23,11 @@ class UiProcessor() : InputAdapter() {
     }
 
     override fun touchUp(screenX: Int, screenY: Int, pointer: Int, button: Int): Boolean {
-        uiElements.forEach { it.onDragEnd() }
+        uiElements.forEach {
+            if(it.isDragging){
+                it.onDragEnd()
+            }
+        }
         return true
     }
 

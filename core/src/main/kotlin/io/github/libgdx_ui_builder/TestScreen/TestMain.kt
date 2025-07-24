@@ -11,7 +11,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.math.Vector
 import com.badlogic.gdx.math.Vector2
 import io.github.libgdx_ui_builder.FontManager
+import io.github.libgdx_ui_builder.GameScreens.CardGameScreen
 import io.github.libgdx_ui_builder.GameScreens.PauseScreen
+import io.github.libgdx_ui_builder.JsonScreens.PauseMainScreen
 import io.github.libgdx_ui_builder.ScreenManager
 import io.github.libgdx_ui_builder.UiElement.PlaceHolder
 import io.github.libgdx_ui_builder.UiFileHandler
